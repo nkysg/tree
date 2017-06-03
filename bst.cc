@@ -16,13 +16,13 @@ BSTree* find(BSTree* root, int x)
                 if (root == NULL) break;
 
                 if (root->val == x) return root;
-                else if (root->val > x) root = root->right;
+                else if (root->val < x) root = root->right;
                 else root = root->left;
         }
         return root;
 }
 
-void find(BSTree* root, int x)
+void insert(BSTree* root, int x)
 {
         BSTree* parent;
         while (true)
@@ -30,19 +30,18 @@ void find(BSTree* root, int x)
                 if (root == NULL) break;
                 parent = root;
                 if (root->val == x) return;
-                else if (root->val > x) root = root->right;
+                else if (root->val < x) root = root->right;
                 else    root = root->left;
         }
         if (parent)
         {
-                BSTree* node = malloc(BSTree);
-                node->val = x;
+                BSTree* node = new BSTree(x);
                 if (x > parent->val) parent->right = node;
                 else parent->left = node;
         }
 }
 
-BSTree* delete(BSTree* root, int x)
+BSTree* del(BSTree* root, int x)
 {
         BSTree* parent;
         while (true)
@@ -50,7 +49,7 @@ BSTree* delete(BSTree* root, int x)
                 if (root == NULL) break;
                 parent = root;
                 if (root->val == x) break;
-                else if (root->val > x) root = root->right;
+                else if (root->val < x) root = root->right;
                 else root = root->left;
         }
         if (root == NULL) return NULL;
