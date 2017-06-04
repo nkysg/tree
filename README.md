@@ -1,2 +1,2 @@
 # tree
-bst,rb,avl,splay,treap
+bst,rb,heap, skiplist, avl,splay,treap
